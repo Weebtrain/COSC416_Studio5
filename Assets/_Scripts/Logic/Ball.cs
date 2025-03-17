@@ -9,12 +9,14 @@ public class Ball : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform ballAnchor;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private GameObject collisionParticles;
 
     private bool isBallActive;
 
     private void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.CompareTag("Paddle"))
+        Instantiate(collisionParticles, this.transform.position + 0.1f * (this.transform.position - other.transform.position), transform.rotation);
+        if (other.gameObject.CompareTag("Paddle"))
         {
             Vector3 directionToFire = (transform.position - other.transform.position).normalized;
             float angleOfContact = Vector3.Angle(transform.forward, directionToFire);
