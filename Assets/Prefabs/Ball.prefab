@@ -102,7 +102,7 @@ MonoBehaviour:
   maxBallBounceBackSpeed: 10
   ballAnchor: {fileID: 0}
   rb: {fileID: 8959031048966596842}
-  pd: {fileID: 8694498140641413672}
+  collisionParticles: {fileID: 2842455538609781126, guid: bab4b4ac33eb7f442b100169be14bfa9, type: 3}
 --- !u!114 &8694498140641413672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,7 +161,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Time: 0.39
-  m_PreviewTimeScale: 0
+  m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1

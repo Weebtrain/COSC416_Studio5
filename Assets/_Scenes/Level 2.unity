@@ -2467,6 +2467,10 @@ PrefabInstance:
       value: Ball
       objectReference: {fileID: 0}
     - target: {fileID: 4784158128372919581, guid: 70365e4fb3127d44db431487cd761c1c, type: 3}
+      propertyPath: VelocityModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784158128372919581, guid: 70365e4fb3127d44db431487cd761c1c, type: 3}
       propertyPath: ShapeModule.m_Rotation.y
       value: -90
       objectReference: {fileID: 0}
@@ -2528,6 +2532,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4699841122469157736, guid: 70365e4fb3127d44db431487cd761c1c, type: 3}
+    - {fileID: 4784158128372919581, guid: 70365e4fb3127d44db431487cd761c1c, type: 3}
+    - {fileID: 4306747915228802554, guid: 70365e4fb3127d44db431487cd761c1c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
