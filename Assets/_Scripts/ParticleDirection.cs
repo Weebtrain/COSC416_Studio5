@@ -33,12 +33,13 @@ public class ParticleDirection : MonoBehaviour
         //Vector3 deltaC = collision.transform.position - transform.position;
         //Debug.Log($"Delta C{deltaC}");
 
-        Vector3 curVel = new Vector3(rb.linearVelocity.normalized.x, 0, rb.linearVelocity.normalized.z);
+        //Vector3 curVel = new Vector3(rb.linearVelocity.normalized.x, 0, rb.linearVelocity.normalized.z);
 
-        float theta = -1 * Mathf.Rad2Deg * Mathf.Acos(Vector3.Dot(Vector3.right, curVel));
-        //theta = Mathf.Rad2Deg * Mathf.Asin(curVel.z / curVel.magnitude);
+        //if (cu)
+        //float theta = -1 * Mathf.Rad2Deg * Mathf.Acos(Vector3.Dot(Vector3.right, curVel));
+        ////theta = Mathf.Rad2Deg * Mathf.Asin(curVel.z / curVel.magnitude);
 
-        child.transform.rotation = Quaternion.identity;
-        child.transform.Rotate(0, theta, 0);
+        //child.transform.rotation = Quaternion.identity;
+        //child.transform.Rotate(0, theta, 0);
     }
 }
