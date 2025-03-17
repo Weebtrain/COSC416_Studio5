@@ -9,6 +9,7 @@ public class Ball : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform ballAnchor;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private ParticleDirection pd;
 
     private bool isBallActive;
 
@@ -16,6 +17,7 @@ public class Ball : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Paddle"))
         {
+            pd.UpdatePreviousVelocity(rb.linearVelocity);
             Vector3 directionToFire = (transform.position - other.transform.position).normalized;
             float angleOfContact = Vector3.Angle(transform.forward, directionToFire);
             float returnSpeed = Mathf.Lerp(minBallBounceBackSpeed, maxBallBounceBackSpeed, angleOfContact / 90f);
