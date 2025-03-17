@@ -22,7 +22,8 @@ public class Brick : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f); // two physics frames to ensure proper collision
         GameManager.Instance.OnBrickDestroyed(transform.position);
-        ps.Play(); 
+        ps.Play();
+        ps.transform.parent = null;
         yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
     }
