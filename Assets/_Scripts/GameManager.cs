@@ -30,11 +30,16 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     public void OnBrickDestroyed(Vector3 position)
     {
         // fire audio here
+        AudioManager.Instance.PlaySoundEffect(0);
         // implement particle effect here
         // add camera shake here
         currentBrickCount--;
         Debug.Log($"Destroyed Brick at {position}, {currentBrickCount}/{totalBrickCount} remaining");
-        if(currentBrickCount == 0) SceneHandler.Instance.LoadNextScene();
+        if (currentBrickCount == 0)
+        {
+            AudioManager.Instance.PlaySoundEffect(1);
+            SceneHandler.Instance.LoadNextScene();
+        }
     }
 
     public void KillBall()
