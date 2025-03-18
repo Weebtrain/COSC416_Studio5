@@ -5,6 +5,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     [SerializeField] private int maxLives = 3;
     [SerializeField] private Ball ball;
     [SerializeField] private Transform bricksContainer;
+    [SerializeField] private GameObject AudioMenu;
 
     private int currentBrickCount;
     private int totalBrickCount;
@@ -12,6 +13,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     private void OnEnable()
     {
         InputHandler.Instance.OnFire.AddListener(FireBall);
+        InputHandler.Instance.OnEscape.AddListener(ToggleAudioMenu);
         ball.ResetBall();
         totalBrickCount = bricksContainer.childCount;
         currentBrickCount = bricksContainer.childCount;
@@ -38,6 +40,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         if (currentBrickCount == 0)
         {
             AudioManager.Instance.PlaySoundEffect(1);
+            AudioManager.Instance.EndMusic();
             SceneHandler.Instance.LoadNextScene();
         }
     }
@@ -48,5 +51,17 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         // update lives on HUD here
         // game over UI if maxLives < 0, then exit to main menu after delay
         ball.ResetBall();
+    }
+
+    public void ToggleAudioMenu ()
+    {
+        AudioMenu.SetActive(!AudioMenu.activeSelf);
+        if (AudioMenu.activeSelf)
+        {
+            Time.timeScale = 0;
+        } else
+        {
+            Time.timeScale = 1;
+        }
     }
 }

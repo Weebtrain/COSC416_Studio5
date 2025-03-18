@@ -5,6 +5,7 @@ public class InputHandler : SingletonMonoBehavior<InputHandler>
 {
     public UnityEvent<Vector3> OnMove;
     public UnityEvent OnFire;
+    public UnityEvent OnEscape;
 
     private void Update()
     {
@@ -12,6 +13,7 @@ public class InputHandler : SingletonMonoBehavior<InputHandler>
         if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) moveVector += Vector3.left;
         if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) moveVector += Vector3.right;
         if(Input.GetKeyDown(KeyCode.Space)) OnFire?.Invoke();
+        if(Input.GetKeyDown(KeyCode.Escape)) OnEscape?.Invoke();
         OnMove?.Invoke(moveVector);
     }
 }

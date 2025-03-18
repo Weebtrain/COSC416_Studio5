@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class AudioManager : MonoBehaviour
 {
@@ -29,5 +30,18 @@ public class AudioManager : MonoBehaviour
     {
         bonkSource.pitch = Random.Range(pitchVarianceMin, pitchVarianceMax);
         bonkSource.PlayOneShot(bonk);
+    }
+    public void MusicVolume(float volume)
+    {
+        musicSource.volume = volume;
+    }
+    public void SFXVolume(float volume)
+    {
+        sfxSource.volume = volume;
+        bonkSource.volume = volume;
+    }
+    public void EndMusic()
+    {
+        musicSource.Stop();
     }
 }
