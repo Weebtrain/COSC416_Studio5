@@ -9,7 +9,6 @@ public class Ball : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform ballAnchor;
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private GameObject collisionParticles;
 
     private bool isBallActive;
 
