@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -26,6 +27,15 @@ public class ScoreCounterUI : MonoBehaviour
     {
         toUpdate.SetText($"{score}");
         scorePointsContainer.DOLocalMoveY(containerInitPosition + moveAmount,duration);
+        StartCoroutine(ResetScoreContainer(score));
+    }
+
+    private IEnumerator ResetScoreContainer(int score)
+    {
+        yield return new WaitForSeconds(duration);
+        current.SetText($"{score}");
+        Vector3 localPosition = scorePointsContainer.localPosition;
+        scorePointsContainer.localPosition = new Vector3(localPosition.x, containerInitPosition, localPosition.z);
     }
 
 }
