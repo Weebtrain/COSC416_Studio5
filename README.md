@@ -1,4 +1,4 @@
-## Itch Page
+## Itch.io Page
 https://weebtrain.itch.io/breakout3d
 
 [Video](https://youtu.be/BuxtEKiOp8c)
