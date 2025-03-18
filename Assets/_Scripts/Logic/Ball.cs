@@ -15,7 +15,9 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        // Adds a small particle effect on any collision the ball makes
         Instantiate(collisionParticles, this.transform.position + 0.1f * (this.transform.position - other.transform.position), transform.rotation);
+        
         if (other.gameObject.CompareTag("Paddle"))
         {
             Vector3 directionToFire = (transform.position - other.transform.position).normalized;
