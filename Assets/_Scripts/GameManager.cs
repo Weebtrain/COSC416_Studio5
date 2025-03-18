@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : SingletonMonoBehavior<GameManager>
 {
@@ -6,9 +7,12 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     [SerializeField] private Ball ball;
     [SerializeField] private Transform bricksContainer;
     [SerializeField] private GameObject AudioMenu;
+    [SerializeField] private int score = 0;
+    [SerializeField] private ScoreCounterUI scoreCounter;
 
     private int currentBrickCount;
     private int totalBrickCount;
+
 
     private void OnEnable()
     {
@@ -37,6 +41,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         // add camera shake here
         currentBrickCount--;
         Debug.Log($"Destroyed Brick at {position}, {currentBrickCount}/{totalBrickCount} remaining");
+        IncreaseScore();
         if (currentBrickCount == 0)
         {
             AudioManager.Instance.PlaySoundEffect(1);
@@ -63,5 +68,10 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         {
             Time.timeScale = 1;
         }
+    }
+    public void IncreaseScore()
+    {
+        score++;
+        scoreCounter.UpdateScore(score);
     }
 }
