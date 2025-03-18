@@ -25,6 +25,7 @@ public class Ball : MonoBehaviour
             rb.angularVelocity = Vector3.zero;
             rb.AddForce(directionToFire * returnSpeed, ForceMode.Impulse);
         }
+        AudioManager.Instance.PlayBonkEffect();
     }
 
     public void ResetBall()

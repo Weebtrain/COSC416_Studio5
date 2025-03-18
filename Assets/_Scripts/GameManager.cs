@@ -6,6 +6,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     [SerializeField] private int maxLives = 3;
     [SerializeField] private Ball ball;
     [SerializeField] private Transform bricksContainer;
+    [SerializeField] private GameObject AudioMenu;
     [SerializeField] private int score = 0;
     [SerializeField] private ScoreCounterUI scoreCounter;
 
@@ -16,6 +17,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     private void OnEnable()
     {
         InputHandler.Instance.OnFire.AddListener(FireBall);
+        InputHandler.Instance.OnEscape.AddListener(ToggleAudioMenu);
         ball.ResetBall();
         totalBrickCount = bricksContainer.childCount;
         currentBrickCount = bricksContainer.childCount;
@@ -34,12 +36,18 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     public void OnBrickDestroyed(Vector3 position)
     {
         // fire audio here
+        AudioManager.Instance.PlaySoundEffect(0);
         // implement particle effect here
         // add camera shake here
         currentBrickCount--;
         Debug.Log($"Destroyed Brick at {position}, {currentBrickCount}/{totalBrickCount} remaining");
         IncreaseScore();
-        if(currentBrickCount == 0) SceneHandler.Instance.LoadNextScene();
+        if (currentBrickCount == 0)
+        {
+            AudioManager.Instance.PlaySoundEffect(1);
+            AudioManager.Instance.EndMusic();
+            SceneHandler.Instance.LoadNextScene();
+        }
     }
 
     public void KillBall()
@@ -50,6 +58,17 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         ball.ResetBall();
     }
 
+    public void ToggleAudioMenu ()
+    {
+        AudioMenu.SetActive(!AudioMenu.activeSelf);
+        if (AudioMenu.activeSelf)
+        {
+            Time.timeScale = 0;
+        } else
+        {
+            Time.timeScale = 1;
+        }
+    }
     public void IncreaseScore()
     {
         score++;
